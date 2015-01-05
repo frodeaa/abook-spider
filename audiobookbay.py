@@ -5,6 +5,10 @@ import scrapy
 class BookItem(scrapy.Item):
     id = scrapy.Field()
     name = scrapy.Field()
+    author = scrapy.Field()
+    format = scrapy.Field()
+    bitrate = scrapy.Field()
+    is_abridged = scrapy.Field()
 
 class Audiobookbay(scrapy.Spider):
     name = 'Audiobookbat'
@@ -19,6 +23,10 @@ class Audiobookbay(scrapy.Spider):
             item = BookItem()
             item['id'] = resp.url
             item['name'] = name
+            for key in ['author', 'format', 'bitrate', 'is_abridged']:
+                query = '//p[@style="left;"]/span[@class="%s"]/text()' % key
+                for v in resp.xpath(query).extract():
+                    item[key] = v
             yield item
 
         # fetch url to book details page
