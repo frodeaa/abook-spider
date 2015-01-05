@@ -14,6 +14,12 @@ class Audiobookbay(scrapy.Spider):
         self.start_urls = ['http://audiobookbay.to/audio-books/type/%s/' % category]
 
     def parse(self, resp):
+        # fetch book details (if any)
+        for name in resp.xpath('//div[@class="postTitle"]/h1/text()').extract():
+            item = BookItem()
+            item['id'] = resp.url
+            item['name'] = name
+            yield item
 
         # fetch url to book details page
         for url in resp.xpath('//span[@class="postLink"]/a/@href').extract():
