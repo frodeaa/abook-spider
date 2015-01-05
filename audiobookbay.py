@@ -7,3 +7,6 @@ class Audiobookbay(scrapy.Spider):
         super(Audiobookbay, self).__init__(*args, **kwargs)
         self.start_urls = ['http://audiobookbay.to/audio-books/type/%s/' % category]
 
+    def parse(self, response):
+        return []
+
