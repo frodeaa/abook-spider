@@ -10,6 +10,12 @@ class Audiobookbay(scrapy.Spider):
         self.start_urls = ['http://audiobookbay.to/audio-books/type/%s/' % category]
 
     def parse(self, resp):
-        for url in resp.xpath('//div[@class="wp-pagenavi"]/a[not(@title)]/@href').extract():
+        # fetch url to next page
+        #for url in resp.xpath('//div[@class="wp-pagenavi"]/a[not(@title)]/@href').extract():
+        #    yield scrapy.Request(url, callback=self.parse)
+
+        # fetch url to book details page
+        for url in resp.xpath('//span[@class="postLink"]/a/@href').extract():
             yield scrapy.Request(url, callback=self.parse)
+
 
