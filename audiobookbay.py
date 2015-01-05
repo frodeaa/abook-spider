@@ -2,6 +2,10 @@
 
 import scrapy
 
+class BookItem(scrapy.Item):
+    id = scrapy.Field()
+    name = scrapy.Field()
+
 class Audiobookbay(scrapy.Spider):
     name = 'Audiobookbat'
 
