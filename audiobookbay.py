@@ -27,6 +27,13 @@ class Audiobookbay(scrapy.Spider):
                 query = '//p[@style="left;"]/span[@class="%s"]/text()' % key
                 for v in resp.xpath(query).extract():
                     item[key] = v
+
+            scrapy.log.msg(">>P> %s " % resp.xpath("//tr[td[text()='Peers:']]/td/text()").extract())
+            scrapy.log.msg(">>S %s " % resp.xpath("//tr[td[text()='Seeds:']]/td/text()").extract())
+            scrapy.log.msg(">>CFS %s " % resp.xpath("//tr[td[text()='Combined File Size:']]/td/text()").extract())
+            scrapy.log.msg(">>CD %s " % resp.xpath("//tr[td[text()='Completed Downloads:']]/td/text()").extract())
+            scrapy.log.msg(">>D %s " % resp.xpath("//a[starts-with(@href, '/download.php?f')]/@href").extract())
+
             yield item
 
         # fetch url to book details page
