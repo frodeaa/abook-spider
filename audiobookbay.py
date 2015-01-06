@@ -12,6 +12,7 @@ class BookItem(scrapy.Item):
     peers = scrapy.Field()
     seeds = scrapy.Field()
     total_size = scrapy.Field()
+    count_downloads = scrapy.Field()
 
 
 class Audiobookbay(scrapy.Spider):
@@ -32,13 +33,14 @@ class Audiobookbay(scrapy.Spider):
                 for v in resp.xpath(query).extract():
                     item[key] = v
 
-            kv = {"peers": "Peers:", "seeds": "Seeds:", "total_size": "Combined File Size:" }
+            kv = {"peers": "Peers:", "seeds": "Seeds:",
+                    "total_size": "Combined File Size:",
+                    "count_downloads": "Completed Downloads:" }
             for k in kv:
                 query = "//tr[td[text()='%s']]/td/text()" % kv[k]
                 for v in resp.xpath(query).extract():
                     item[k] = v
 
-            scrapy.log.msg(">>CD %s " % resp.xpath("//tr[td[text()='Completed Downloads:']]/td/text()").extract())
             scrapy.log.msg(">>D %s " % resp.xpath("//a[starts-with(@href, '/download.php?f')]/@href").extract())
 
             yield item
