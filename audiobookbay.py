@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import scrapy
+from urlparse import urljoin
 
 class BookItem(scrapy.Item):
     id = scrapy.Field()
@@ -13,6 +14,7 @@ class BookItem(scrapy.Item):
     seeds = scrapy.Field()
     total_size = scrapy.Field()
     count_downloads = scrapy.Field()
+    torrent_url = scrapy.Field()
 
 
 class Audiobookbay(scrapy.Spider):
@@ -41,7 +43,8 @@ class Audiobookbay(scrapy.Spider):
                 for v in resp.xpath(query).extract():
                     item[k] = v
 
-            scrapy.log.msg(">>D %s " % resp.xpath("//a[starts-with(@href, '/download.php?f')]/@href").extract())
+            for v in resp.xpath("//a[starts-with(@href, '/download.php?f')]/@href").extract():
+                item['torrent_url'] = urljoin(resp.url, v)
 
             yield item
 
