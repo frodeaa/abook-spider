@@ -20,9 +20,14 @@ class BookItem(scrapy.Item):
 class Audiobookbay(scrapy.Spider):
     name = 'Audiobookbay'
 
-    def __init__(self, category=None, *args, **kwargs):
+    def __init__(self, category=None, limit=1, *args, **kwargs):
         super(Audiobookbay, self).__init__(*args, **kwargs)
-        self.start_urls = ['http://audiobookbay.to/audio-books/type/%s/' % category]
+        self.limit = limit
+        if limit and int(limit) > 1:
+            self.start_urls = ['http://audiobookbay.to/audio-books/type/%s/page/%s' %
+                     (category, page) for page in range(1, int(limit) + 1)]
+        else:
+            self.start_urls = ['http://audiobookbay.to/audio-books/type/%s/' % category]
 
     def parse(self, resp):
         # fetch book details (if any)
