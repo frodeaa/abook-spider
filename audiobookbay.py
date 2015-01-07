@@ -57,7 +57,8 @@ class Audiobookbay(scrapy.Spider):
         for url in resp.xpath('//span[@class="postLink"]/a/@href').extract():
             yield scrapy.Request(url, callback=self.parse)
 
-        # fetch url to next page
-        #for url in resp.xpath('//div[@class="wp-pagenavi"]/a[not(@title)]/@href').extract():
-        #    yield scrapy.Request(url, callback=self.parse)
+        # fetch url to next category page, traverse all pages
+        if self.limit == '0':
+            for url in resp.xpath('//div[@class="wp-pagenavi"]/a[not(@title)]/@href').extract():
+                yield scrapy.Request(url, callback=self.parse)
 
