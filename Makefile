@@ -13,3 +13,8 @@ fetch-all: fetch-clean
 	$(call fetch,fantasy,$(limit))
 	$(call fetch,sci-fi,$(limit))
 
+clean:
+	rm -rf www
+
+build: clean
+	complexity --noserver project
