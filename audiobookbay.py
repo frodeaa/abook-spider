@@ -15,6 +15,7 @@ class BookItem(scrapy.Item):
     total_size = scrapy.Field()
     count_downloads = scrapy.Field()
     torrent_url = scrapy.Field()
+    cover_url = scrapy.Field()
 
 
 class Audiobookbay(scrapy.Spider):
@@ -50,6 +51,9 @@ class Audiobookbay(scrapy.Spider):
 
             for v in resp.xpath("//a[starts-with(@href, '/download.php?f')]/@href").extract():
                 item['torrent_url'] = urljoin(resp.url, v)
+
+            for img in resp.xpath("//div[@class='postContent']/div/p/a/img/@src").extract():
+                item['cover_url'] = img
 
             yield item
 
