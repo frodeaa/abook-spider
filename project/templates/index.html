@@ -3,10 +3,15 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-lg-12">
-        <h1>Home</h1>
-        <p>This is the Home page of your website.</p>
+<div class="row books">
+	{% for book in fantasy %}
+    <div class="media am-fade col-lg-4 col-md-6 col-sm-6 col-xs-12">
+      <a class="pull-left book-image">
+        <img src="{{ book.cover_url }}" title="{{ book.name }}" 
+        	style="display: inline;" onError="this.onerror=null;this.src='/img/no_cover.jpeg';">
+      </a>
     </div>
-</div>
+    {% endfor %}
+  </div>
+
 {% endblock %}

@@ -14,3 +14,16 @@
 	margin-bottom: 50px;
 	padding: 0;
 }
+
+.books {
+	min-height: 940px;
+	opacity: 1;
+	transition: opacity .08s ease-in-out;
+	-moz-transition: opacity .08s ease-in-out;
+	-webkit-transition: opacity .08s ease-in-out;
+}
+
+.book-image > img {
+	max-width: 166px;
+}
+
