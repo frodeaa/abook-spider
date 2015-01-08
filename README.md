@@ -17,6 +17,5 @@ $ pip install scrapy
 Execute the spider with
 
 <pre>
-$ scrapy runspider -a category=fantasy audiobookbay.py
+$ scrapy runspider -a limit=2 -a category=fantasy audiobookbay.py
 </pre>
-
