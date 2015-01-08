@@ -12,7 +12,7 @@ spiders
 $ pip install scrapy
 </pre>
 
-## Run spiider
+## Run spider
 
 Execute the spider with
 
