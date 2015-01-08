@@ -7,8 +7,8 @@ fetch = scrapy runspider -a limit=$(2) -a category=$(1) \
 	--nolog -o - -t json audiobookbay.py > $(context)/$(1).json
 
 fetch-clean:
-	rm -rf context
-	mkdir -p context
+	rm -rf $(context)
+	mkdir -p $(context)
 
 fetch-all: fetch-clean
 	$(call fetch,fantasy,$(limit))
