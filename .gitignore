@@ -54,3 +54,4 @@ docs/_build/
 target/
 *.swp
 .DS_Store
+www
