@@ -25,5 +25,8 @@
 
 .book-image > img {
 	max-width: 166px;
+	border-radius: 3px;
+	vertical-align: middle;
+	border: 0;
 }
 
