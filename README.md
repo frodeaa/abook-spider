@@ -19,3 +19,11 @@ Execute the spider with
 <pre>
 $ scrapy runspider -a limit=2 -a category=fantasy audiobookbay.py
 </pre>
+
+## install complexity
+
+You need to install complexity before running the page generator
+
+<pre>
+	$ pip install complexity
+</pre>
