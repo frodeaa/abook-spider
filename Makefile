@@ -1,3 +1,4 @@
+all: fetch-all build
 
 limit = 3
 abooks = project/context/abooks
