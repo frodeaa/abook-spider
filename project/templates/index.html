@@ -12,6 +12,10 @@
       </a>
       <div class="media-body book-info">
         <h4 class="media-heading">{{ book.name }}</h4>
+        <p class="meta">
+        	<span class="author">{{ book.author }}</span>
+        	<span class="label label-default format">{{ book.format }}</span></p>
+        	<p class="description"></p>
       </div>
     </div>
     {% endfor %}
