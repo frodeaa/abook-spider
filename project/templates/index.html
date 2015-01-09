@@ -21,7 +21,9 @@
                 {% if book.is_abridged %}
                 <span class="label label-default abridged">{{ book.is_abridged }}</span>
                 {% endif %}
+                {% if book.format %}
                 <span class="label label-default format">{{ book.format }}</span>
+                {% endif %}
             </p>
             <p class="description"></p>
             <table class="torrent_details">
