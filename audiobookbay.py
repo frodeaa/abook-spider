@@ -2,6 +2,7 @@
 
 import scrapy
 from urlparse import urljoin
+import summary_tool
 
 class BookItem(scrapy.Item):
     id = scrapy.Field()
@@ -16,6 +17,8 @@ class BookItem(scrapy.Item):
     count_downloads = scrapy.Field()
     torrent_url = scrapy.Field()
     cover_url = scrapy.Field()
+    long_text = scrapy.Field()
+    summary = scrapy.Field();
 
 
 class Audiobookbay(scrapy.Spider):
@@ -54,6 +57,15 @@ class Audiobookbay(scrapy.Spider):
 
             for img in resp.xpath("//div[@class='postContent']/div/p/a/img/@src").extract():
                 item['cover_url'] = img
+
+            for text in resp.xpath("//div[@class='postContent']/p[@style='left;']/text()").extract():
+                text = text.rstrip("\r\n").lstrip("\r\n")
+                item['long_text'] = text
+                item['summary'] = text
+                if len(text) > 100:
+                    st = summary_tool.SummaryTool()
+                    sentences_dic = st.get_senteces_ranks(text)
+                    item['summary'] = st.get_summary("", text, sentences_dic).lstrip("\r\n")
 
             yield item
 
