@@ -14,8 +14,10 @@
           </a>
           <div class="media-body book-info col-md-6" >
             <h4 class="media-heading">{{ book.name }}</h4>
+            {% if book.author %}
+            <h6 class="author">{{ book.author }}</h6>
+            {% endif %}
             <p class="meta">
-                <span class="author">{{ book.author }}</span>
                 {% if book.is_abridged %}
                 <span class="label label-default abridged">{{ book.is_abridged }}</span>
                 {% endif %}
