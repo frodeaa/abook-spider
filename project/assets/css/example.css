@@ -30,6 +30,10 @@
 	border: 0;
 }
 
+.torrent_details-spacer {
+	padding-right: 10px;
+}
+
 @media (max-width: 768px) {
 	.row {
 		margin-left: 0;

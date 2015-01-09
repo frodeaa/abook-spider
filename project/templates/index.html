@@ -17,6 +17,18 @@
         		<span class="label label-default format">{{ book.format }}</span>
         	</p>
         	<p class="description"></p>
+        	<table class="torrent_details">
+            	<tbody>
+            		<tr>
+                		<td>Seeds:</td>
+                		<td class="torrent_details-spacer">
+                			<span>{{ '%s' % book.seeds if book.seeds else '?' }}</span>
+                		</td>
+                		<td>Peers:</td>
+                		<td>{{ '%s' % book.peers if book.peers else '?' }}</td>
+            		</tr>
+        		</tbody>
+        	</table>
     	</div>
     </div>
     {% endfor %}
