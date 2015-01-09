@@ -7,46 +7,47 @@
     {% for book in fantasy %}
     <div class="media am-fade col-lg-4 col-md-6 col-sm-6 col-xs-12">
     	<div class="row">
-        <a class="pull-left book-image col-md-6">
-            <img src="{{ book.cover_url }}" title="{{ book.name }}"
-            	alt="book cover for {{ book.name }}"
-                style="display: inline;" onError="this.onerror=null;this.src='/img/no_cover.jpeg';">
-          </a>
-          <div class="media-body book-info col-md-6" >
-            <h4 class="media-heading">{{ book.name }}</h4>
-            {% if book.author %}
-            <h6 class="author">{{ book.author }}</h6>
-            {% endif %}
-            <p class="meta">
-                {% if book.is_abridged %}
-                <span class="label label-default abridged">{{ book.is_abridged }}</span>
-                {% endif %}
-                {% if book.format %}
-                <span class="label label-default format">{{ book.format }}</span>
-                {% endif %}
-            </p>
-            <p class="description">{{ book.summary }}</p>
-            <table class="torrent_details">
-                <tbody>
-                    <tr>
-                        <td>Seeds:</td>
-                        <td class="torrent_details-spacer">
-                            <span>{{ '%s' % book.seeds if book.seeds else '?' }}</span>
-                        </td>
-                        <td>Peers:</td>
-                        <td>{{ '%s' % book.peers if book.peers else '?' }}</td>
-                    </tr>
-                    <tr>
-                        <td>Size:</td>
-                        <td class="torrent_details-spacer">
-                            <span>{{ '%s' % book.total_size if book.total_size else '?' }}</span>
-                        </td>
-                        <td>Downs:</td>
-                        <td>{{ '%s' % book.count_downloads if book.count_downloads else '?' }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div></div>
+        	<a class="pull-left book-image col-md-6">
+        	    <img src="{{ book.cover_url }}" title="{{ book.name }}"
+        	    	alt="book cover for {{ book.name }}"
+        	        style="display: inline;" onError="this.onerror=null;this.src='/img/no_cover.jpeg';">
+        	  </a>
+        	  <div class="media-body book-info col-md-6" >
+        	    <h4 class="media-heading">{{ book.name }}</h4>
+        	    {% if book.author %}
+        	    <h6 class="author">{{ book.author }}</h6>
+        	    {% endif %}
+        	    <p class="meta">
+        	        {% if book.is_abridged %}
+        	        <span class="label label-default abridged">{{ book.is_abridged }}</span>
+        	        {% endif %}
+        	        {% if book.format %}
+        	        <span class="label label-default format">{{ book.format }}</span>
+        	        {% endif %}
+        	    </p>
+        	    <p class="description">{{ book.summary }}</p>
+        	    <table class="torrent_details">
+        	        <tbody>
+        	            <tr>
+        	                <td>Seeds:</td>
+        	                <td class="torrent_details-spacer">
+        	                    <span>{{ '%s' % book.seeds if book.seeds else '?' }}</span>
+        	                </td>
+        	                <td>Peers:</td>
+        	                <td>{{ '%s' % book.peers if book.peers else '?' }}</td>
+        	            </tr>
+        	            <tr>
+        	                <td>Size:</td>
+        	                <td class="torrent_details-spacer">
+        	                    <span>{{ '%s' % book.total_size if book.total_size else '?' }}</span>
+        	                </td>
+        	                <td>Downs:</td>
+        	                <td>{{ '%s' % book.count_downloads if book.count_downloads else '?' }}</td>
+        	            </tr>
+        	        </tbody>
+        	    </table>
+        	</div>
+        </div>
     </div>
     {% endfor %}
   </div>
