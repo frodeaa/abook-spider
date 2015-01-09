@@ -4,32 +4,32 @@
 
 {% block content %}
 <div class="row books">
-	{% for book in fantasy %}
+    {% for book in fantasy %}
     <div class="media am-fade col-lg-4 col-md-6 col-sm-6 col-xs-12">
-    	<a class="pull-left book-image">
-    		<img src="{{ book.cover_url }}" title="{{ book.name }}" 
-    			style="display: inline;" onError="this.onerror=null;this.src='/img/no_cover.jpeg';">
-      	</a>
-      	<div class="media-body book-info">
-        	<h4 class="media-heading">{{ book.name }}</h4>
-        	<p class="meta">
-        		<span class="author">{{ book.author }}</span>
-        		<span class="label label-default format">{{ book.format }}</span>
-        	</p>
-        	<p class="description"></p>
-        	<table class="torrent_details">
-            	<tbody>
-            		<tr>
-                		<td>Seeds:</td>
-                		<td class="torrent_details-spacer">
-                			<span>{{ '%s' % book.seeds if book.seeds else '?' }}</span>
-                		</td>
-                		<td>Peers:</td>
-                		<td>{{ '%s' % book.peers if book.peers else '?' }}</td>
-            		</tr>
-        		</tbody>
-        	</table>
-    	</div>
+        <a class="pull-left book-image">
+            <img src="{{ book.cover_url }}" title="{{ book.name }}" 
+                style="display: inline;" onError="this.onerror=null;this.src='/img/no_cover.jpeg';">
+          </a>
+          <div class="media-body book-info">
+            <h4 class="media-heading">{{ book.name }}</h4>
+            <p class="meta">
+                <span class="author">{{ book.author }}</span>
+                <span class="label label-default format">{{ book.format }}</span>
+            </p>
+            <p class="description"></p>
+            <table class="torrent_details">
+                <tbody>
+                    <tr>
+                        <td>Seeds:</td>
+                        <td class="torrent_details-spacer">
+                            <span>{{ '%s' % book.seeds if book.seeds else '?' }}</span>
+                        </td>
+                        <td>Peers:</td>
+                        <td>{{ '%s' % book.peers if book.peers else '?' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
     {% endfor %}
   </div>
