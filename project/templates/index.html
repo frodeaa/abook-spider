@@ -30,6 +30,14 @@
                         <td>Peers:</td>
                         <td>{{ '%s' % book.peers if book.peers else '?' }}</td>
                     </tr>
+                    <tr>
+                        <td>Size:</td>
+                        <td class="torrent_details-spacer">
+                            <span>{{ '%s' % book.total_size if book.total_size else '?' }}</span>
+                        </td>
+                        <td>Downs:</span></td>
+                        <td>{{ '%s' % book.count_downloads if book.count_downloads else '?' }}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
