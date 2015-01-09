@@ -6,12 +6,13 @@
 <div class="row books">
     {% for book in fantasy %}
     <div class="media am-fade col-lg-4 col-md-6 col-sm-6 col-xs-12">
-        <a class="pull-left book-image">
+    	<div class="row">
+        <a class="pull-left book-image col-md-6">
             <img src="{{ book.cover_url }}" title="{{ book.name }}"
             	alt="book cover for {{ book.name }}"
                 style="display: inline;" onError="this.onerror=null;this.src='/img/no_cover.jpeg';">
           </a>
-          <div class="media-body book-info">
+          <div class="media-body book-info col-md-6" >
             <h4 class="media-heading">{{ book.name }}</h4>
             <p class="meta">
                 <span class="author">{{ book.author }}</span>
@@ -41,7 +42,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </div></div>
     </div>
     {% endfor %}
   </div>
