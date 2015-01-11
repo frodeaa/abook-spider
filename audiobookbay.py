@@ -8,6 +8,7 @@ class BookItem(scrapy.Item):
     id = scrapy.Field()
     name = scrapy.Field()
     author = scrapy.Field()
+    category = scrapy.Field()
     format = scrapy.Field()
     bitrate = scrapy.Field()
     is_abridged = scrapy.Field()
@@ -27,6 +28,7 @@ class Audiobookbay(scrapy.Spider):
     def __init__(self, category=None, limit=1, *args, **kwargs):
         super(Audiobookbay, self).__init__(*args, **kwargs)
         self.limit = limit
+        self.category = category
         if limit and int(limit) > 1:
             self.start_urls = ['http://audiobookbay.to/audio-books/type/%s/page/%s' %
                      (category, page) for page in range(1, int(limit) + 1)]
@@ -39,6 +41,7 @@ class Audiobookbay(scrapy.Spider):
             item = BookItem()
             item['id'] = resp.url
             item['name'] = name
+            item['category'] = self.category
             for key in ['author', 'format', 'bitrate', 'is_abridged']:
                 query = '//p[@style="left;"]/span[@class="%s"]/text()' % key
                 for v in resp.xpath(query).extract():
