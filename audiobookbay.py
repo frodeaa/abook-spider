@@ -65,7 +65,7 @@ class Audiobookbay(scrapy.Spider):
                 text = text.rstrip("\r\n").lstrip("\r\n")
                 item['long_text'] = text
                 item['summary'] = text
-                if len(text) > 100:
+                if len(text) > 200:
                     st = summary_tool.SummaryTool()
                     sentences_dic = st.get_senteces_ranks(text)
                     item['summary'] = st.get_summary("", text, sentences_dic).lstrip("\r\n")
